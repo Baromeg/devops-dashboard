@@ -3,8 +3,6 @@ import { EndpointData } from './types'
 import './index.css'
 import config from './config'
 
-const apiUrl = config.apiUrl
-
 const App: React.FC = () => {
   const [data, setData] = useState<EndpointData[]>([])
   const [error, setError] = useState<string | null>(null)
@@ -14,8 +12,18 @@ const App: React.FC = () => {
     const delay = 2000 // 2 seconds delay
 
     const timeoutId = setTimeout(() => {
-      const ws = new WebSocket(`ws://${apiUrl}/websocket`)
+      const apiUrl = config.apiUrl
+      const wsProtocol = apiUrl.startsWith('https') ? 'wss' : 'ws'
 
+      let wsUrl: string
+      try {
+        wsUrl = `${wsProtocol}://${new URL(apiUrl).host}/websocket`
+      } catch (error) {
+        console.error('Invalid API URL:', apiUrl)
+        throw new Error('Failed to construct WebSocket URL')
+      }
+
+      const ws = new WebSocket(wsUrl)
       ws.onopen = () => {
         console.log('WebSocket connection opened')
       }
