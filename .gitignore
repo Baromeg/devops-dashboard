@@ -1,0 +1,15 @@
+# Node modules
+node_modules
+
+# Logs
+logs
+*.log
+
+# Build outputs
+dist
+
+# Frontend build
+build
+
+# dotenv environment variables file
+.env
