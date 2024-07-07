@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { EndpointData } from './types'
 import './index.css'
+import config from './config'
+
+const apiUrl = config.apiUrl
 
 const App: React.FC = () => {
   const [data, setData] = useState<EndpointData[]>([])
@@ -11,7 +14,7 @@ const App: React.FC = () => {
     const delay = 2000 // 2 seconds delay
 
     const timeoutId = setTimeout(() => {
-      const ws = new WebSocket('ws://localhost:4000/websocket')
+      const ws = new WebSocket(`ws://${apiUrl}/websocket`)
 
       ws.onopen = () => {
         console.log('WebSocket connection opened')
