@@ -1,6 +1,11 @@
 import express from 'express'
 import { Server } from 'http'
 import { setupWebSocket } from './wsService'
+import dotenv from 'dotenv'
+
+dotenv.config({
+  path: process.env.NODE_ENV === 'production' ? '.env.production' : '.env'
+})
 
 export const app = express()
 const port = process.env.PORT || 4000
