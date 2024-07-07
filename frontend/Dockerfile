@@ -12,5 +12,14 @@ RUN npm install
 # Copy local code to the container image.
 COPY . .
 
-# Start the development server with hot-reloading.
-CMD ["npm", "start"]
+# Build the application
+RUN npm run build
+
+# Install serve to serve the build
+RUN npm install -g serve
+
+# Expose the port the app runs on
+EXPOSE 3000
+
+# Run the application
+CMD ["serve", "-s", "build"]

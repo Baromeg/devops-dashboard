@@ -12,8 +12,11 @@ RUN npm install
 # Copy local code to the container image.
 COPY . .
 
-# Install development dependencies for testing
-RUN npm install --only=dev
+# Build the application
+RUN npm run build
+
+# Expose the port the app runs on
+EXPOSE 4000
 
 # Run the web service on container startup.
 CMD ["npm", "run", "dev"]
