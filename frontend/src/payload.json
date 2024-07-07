@@ -1,0 +1,496 @@
+{
+  "data": [
+    {
+      "status": "ok",
+      "region": "us-east",
+      "roles": ["socket"],
+      "results": {
+        "services": {
+          "redis": true,
+          "database": true
+        },
+        "stats": {
+          "servers_count": 2,
+          "online": 673,
+          "session": 0,
+          "server": {
+            "active_connections": 470,
+            "wait_time": 0,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 0,
+                  "workers": 263,
+                  "waiting": 0,
+                  "idle": 27,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["3FG7RD4yF6", 1, "2024-07-05T07:36:59.345Z"]
+                  ],
+                  "top_keys": [
+                    ["Bvy5aLQrQE", 0.091324200913242],
+                    ["rMccHqnmWV", 0.1872146118721461],
+                    ["3FG7RD4yF6", 0.091324200913242],
+                    ["eakJiadzmi", 0.0867579908675799],
+                    ["LJJk9ezA8p", 0.0867579908675799]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.06,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    },
+    {
+      "status": "ok",
+      "region": "eu-west",
+      "roles": ["socket"],
+      "results": {
+        "services": {
+          "redis": true,
+          "database": true
+        },
+        "stats": {
+          "servers_count": 3,
+          "online": 4189,
+          "session": 7,
+          "server": {
+            "active_connections": 1744,
+            "wait_time": 0,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 0,
+                  "workers": 969,
+                  "waiting": 0,
+                  "idle": 97,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["ZrTi2CzEnj", 1, "2024-07-05T05:37:06.094Z"]
+                  ],
+                  "top_keys": [
+                    ["3FG7RD4yF6", 0.17757009345794392],
+                    ["craxjYheSy", 0.054906542056074766],
+                    ["Dt8JVgXaGP4HzxjoZuZVuu6F", 0.21845794392523366],
+                    ["rZxAi6fCTu", 0.054906542056074766],
+                    ["qPYBL4bhqo", 0.08294392523364486]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.11,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    },
+    {
+      "status": "ok",
+      "region": "eu-central",
+      "roles": ["socket", "proxy"],
+      "results": {
+        "services": {
+          "redis": true,
+          "database": true
+        },
+        "stats": {
+          "servers_count": 2,
+          "online": 5452,
+          "session": 8,
+          "server": {
+            "active_connections": 3044,
+            "wait_time": 273,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 273,
+                  "workers": 2390,
+                  "waiting": 1,
+                  "idle": 239,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["3FG7RD4yF6", 1, "2024-07-05T07:38:29.511Z"]
+                  ],
+                  "top_keys": [
+                    ["3FG7RD4yF6", 0.19559099437148217],
+                    ["fodC623Qt3", 0.15619136960600374],
+                    ["h9pP7gxVZJEK2gDCfSXBqNtr", 0.13883677298311445],
+                    ["rZxAi6fCTu", 0.09896810506566604],
+                    ["Dt8JVgXaGP4HzxjoZuZVuu6F", 0.07082551594746717]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.19,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    },
+    {
+      "status": "ok",
+      "region": "us-west",
+      "roles": ["socket", "proxy"],
+      "results": {
+        "services": {
+          "redis": true,
+          "database": true
+        },
+        "stats": {
+          "servers_count": 2,
+          "online": 434,
+          "session": 0,
+          "server": {
+            "active_connections": 380,
+            "wait_time": 0,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 0,
+                  "workers": 213,
+                  "waiting": 0,
+                  "idle": 22,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["eakJiadzmi", 1, "2024-07-05T07:33:00.644Z"]
+                  ],
+                  "top_keys": [
+                    ["3FG7RD4yF6", 0.12138728323699421],
+                    ["eakJiadzmi", 0.3872832369942196],
+                    ["Bvy5aLQrQE", 0.06936416184971098],
+                    ["Pa9Gk8CekbZaomDBDXkSLEGD", 0.05202312138728324],
+                    ["rpmQxcvLNs", 0.03468208092485549]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.04,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    },
+    {
+      "status": "ok",
+      "region": "sa-east",
+      "roles": ["socket"],
+      "results": {
+        "services": {
+          "database": true,
+          "redis": true
+        },
+        "stats": {
+          "servers_count": 2,
+          "online": 56,
+          "session": 0,
+          "server": {
+            "active_connections": 80,
+            "wait_time": 0,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 0,
+                  "workers": 40,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["LGDv6kK43XoZayFbJVQEzFnf", 1, "2024-07-04T23:10:09.798Z"]
+                  ],
+                  "top_keys": [
+                    ["LGDv6kK43XoZayFbJVQEzFnf", 0.631578947368421],
+                    ["e9EatioCWG", 0.05263157894736842],
+                    ["3FG7RD4yF6", 0.21052631578947367],
+                    ["Gq3BoP5WLtzbHTXuGDeSDHW8", 0.05263157894736842],
+                    ["Bvy5aLQrQE", 0.05263157894736842]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.01,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    },
+    {
+      "status": "ok",
+      "region": "ap-southeast",
+      "roles": ["socket"],
+      "results": {
+        "services": {
+          "database": true,
+          "redis": true
+        },
+        "stats": {
+          "servers_count": 2,
+          "online": 3687,
+          "session": 1,
+          "server": {
+            "active_connections": 2288,
+            "wait_time": 440,
+            "workers": [
+              [
+                "requests:pageviews",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "io",
+                {
+                  "wait_time": 440,
+                  "workers": 1271,
+                  "waiting": 2,
+                  "idle": 127,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [
+                    ["3FG7RD4yF6", 1, "2024-07-05T06:54:39.864Z"]
+                  ],
+                  "top_keys": [
+                    ["3FG7RD4yF6", 0.21308576480990274],
+                    ["Dt8JVgXaGP4HzxjoZuZVuu6F", 0.15649867374005305],
+                    ["f9JxNJxdBM", 0.14235190097259062],
+                    ["HgRhJThMQS", 0.04951370468611848],
+                    ["rpmQxcvLNs", 0.06896551724137931]
+                  ]
+                }
+              ],
+              [
+                "requests:unsupported-users",
+                {
+                  "wait_time": 0,
+                  "workers": 0,
+                  "waiting": 0,
+                  "idle": 0,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ],
+              [
+                "recording-workers",
+                {
+                  "wait_time": 0,
+                  "workers": 2,
+                  "waiting": 0,
+                  "idle": 2,
+                  "time_to_return": 0,
+                  "recently_blocked_keys": [],
+                  "top_keys": []
+                }
+              ]
+            ],
+            "cpu_load": 0.13,
+            "timers": 100
+          }
+        }
+      },
+      "strict": false,
+      "server_issue": null
+    }
+  ]
+}

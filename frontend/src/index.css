@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #1a202c;
+  color: #edf2f7;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.text-neon-green {
+  color: #39ff14;
+}
+
+.text-neon-blue {
+  color: #00e5ff;
+}
+
+.text-neon-purple {
+  color: #c71585;
+}
+
+.text-neon-red {
+  color: #ff073a;
+}
+
+.text-neon-yellow {
+  color: #ffd700;
+}
+
+.border-neon {
+  border-color: #00e5ff;
+}
+
+.shadow-neon {
+  box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff, 0 0 30px #00e5ff;
+}
+
+.loader {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 4px solid #fff;
+  width: 40px;
+  height: 40px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive font sizes based on viewport dimensions */
+h1 {
+  font-size: 3vw; /* Adjust the value to fit your design */
+}
+
+h2 {
+  font-size: 2vw; /* Adjust the value to fit your design */
+}
+
+h3 {
+  font-size: 1.7vw; /* Adjust the value to fit your design */
+}
+
+p,
+li {
+  font-size: 1vw; /* Adjust the value to fit your design */
+}
+
+/* Fine-tune for smaller screens */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4vw;
+  }
+  h2 {
+    font-size: 3vw;
+  }
+  h3 {
+    font-size: 2vw;
+  }
+  p,
+  li {
+    font-size: 2vw;
+  }
+}
