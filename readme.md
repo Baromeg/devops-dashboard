@@ -13,7 +13,7 @@ A real-time dashboard application to monitor server statuses and key metrics usi
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/your-username/devops-dashboard.git
+git clone https://github.com/Baromeg/devops-dashboard.git
 cd devops-dashboard
 ```
 
