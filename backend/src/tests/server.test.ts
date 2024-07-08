@@ -7,7 +7,7 @@ import { closeWebSocket, setupWebSocket } from '../wsService'
 let server: Server
 
 beforeAll((done: jest.DoneCallback) => {
-  server = app.listen(4000, done)
+  server = app.listen(process.env.PORT || 4000, done)
   setupWebSocket(server)
   done()
 })
@@ -29,7 +29,14 @@ afterAll(async () => {
 
 describe('WebSocket Server', () => {
   it('should accept WebSocket connections', (done: jest.DoneCallback) => {
-    const ws = new WebSocket('ws://localhost:4000')
+    const apiUrl =
+      process.env.NODE_ENV === 'production'
+        ? 'https://devops-dashboard-backend-dca5eea3e154.herokuapp.com'
+        : 'http://localhost:4000'
+    const wsProtocol = apiUrl.startsWith('https') ? 'wss' : 'ws'
+    const ws = new WebSocket(
+      `${wsProtocol}://${new URL(apiUrl).host}/websocket`
+    )
 
     ws.on('open', () => {
       ws.close()

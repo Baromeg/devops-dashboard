@@ -26,7 +26,6 @@ export function setupWebSocket(server: Server) {
         )
         const data = responses.map((response) => response.data)
         const payload = JSON.stringify(data)
-        console.log({ payload })
 
         ws.send(payload)
       } catch (error) {

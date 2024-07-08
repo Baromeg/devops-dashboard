@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { EndpointData } from './types'
 import './index.css'
-import config from './config'
 
 const App: React.FC = () => {
   const [data, setData] = useState<EndpointData[]>([])
@@ -12,7 +11,10 @@ const App: React.FC = () => {
     const delay = 2000 // 2 seconds delay
 
     const timeoutId = setTimeout(() => {
-      const apiUrl = config.apiUrl
+      const apiUrl =
+        process.env.NODE_ENV === 'production'
+          ? 'https://devops-dashboard-backend-dca5eea3e154.herokuapp.com'
+          : 'http://localhost:4000'
       const wsProtocol = apiUrl.startsWith('https') ? 'wss' : 'ws'
 
       let wsUrl: string
@@ -30,7 +32,6 @@ const App: React.FC = () => {
 
       ws.onmessage = (event) => {
         try {
-          console.log('Received data:', event.data)
           const parsedData = JSON.parse(event.data)
           setData(parsedData)
           setLoading(false)
@@ -180,8 +181,6 @@ const App: React.FC = () => {
                               topKeys.map(([key, value], idx) => (
                                 <li key={idx} className='break-words'>
                                   {key.split('').reduce((acc, char, index) => {
-                                    console.log({ acc })
-
                                     return index % 10 === 0
                                       ? `${acc}`
                                       : `${acc}${char}`

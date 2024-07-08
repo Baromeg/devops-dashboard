@@ -12,6 +12,10 @@ RUN npm install
 # Copy local code to the container image.
 COPY . .
 
+# Set environment variables
+ARG NODE_ENV
+ENV NODE_ENV $NODE_ENV
+
 # Build the application
 RUN npm run build
 

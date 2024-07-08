@@ -4,24 +4,26 @@ services:
       context: ./backend
       dockerfile: Dockerfile
       args:
-        - NODE_ENV=production
+        - NODE_ENV=development
     ports:
       - "4000:4000"
     volumes:
       - ./backend:/usr/src/app
       - /usr/src/app/node_modules
     environment:
-      - NODE_ENV=production
-      - APP_API_URL=https://devops-dashboard-backend-dca5eea3e154.herokuapp.com
+      - NODE_ENV=development
+      - APP_API_URL=http://localhost:4000
     env_file:
       - ./backend/.env
+    command: npm run dev
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - NODE_ENV=production
+        - NODE_ENV=development
+        - REACT_APP_API_URL=http://localhost:3000
     ports:
       - 3000:3000
     volumes:
@@ -29,6 +31,7 @@ services:
       - /usr/src/app/node_modules
     environment:
       - NODE_ENV=development
-      - REACT_APP_API_URL=https://devops-dashboard-frontend-04bfd6080699.herokuapp.com
+      - REACT_APP_API_URL=http://localhost:3000
     env_file:
       - ./frontend/.env
+    command: npm start
