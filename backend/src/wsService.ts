@@ -12,34 +12,36 @@ const endpoints = [
   'https://data--ap-southeast.upscope.io/status?stats=1'
 ]
 
+let payload: any
+let websocketList: WebSocket[] = []
+
+const fetchData = async () => {
+  const responses = await Promise.all(
+    endpoints.map((url) => axios.get<EndpointData>(url))
+  )
+  const data = responses.map((response) => response.data)
+  payload = JSON.stringify(data)
+  websocketList.forEach((websocket) => {
+    websocket.send(payload)
+  })
+}
+
+const interval = setInterval(fetchData, 3000)
+
 let wss: WebSocket.Server
-export function setupWebSocket(server: Server) {
+
+export async function setupWebSocket(server: Server) {
   wss = new WebSocket.Server({ server })
 
   wss.on('connection', (ws) => {
     console.log('Client connected')
+    websocketList.push(ws)
 
-    const fetchAndSendData = async () => {
-      try {
-        const responses = await Promise.all(
-          endpoints.map((url) => axios.get<EndpointData>(url))
-        )
-        const data = responses.map((response) => response.data)
-        const payload = JSON.stringify(data)
-
-        ws.send(payload)
-      } catch (error) {
-        console.error('Error fetching data', error)
-        ws.send(JSON.stringify({ error: 'Error fetching data' }))
-      }
-    }
-
-    fetchAndSendData()
-    const interval = setInterval(fetchAndSendData, 3000)
+    ws.send(payload)
 
     ws.on('close', () => {
-      clearInterval(interval)
       console.log('Client disconnected')
+      websocketList = websocketList.filter((websocket) => websocket !== ws)
     })
   })
 }

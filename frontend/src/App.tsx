@@ -8,57 +8,51 @@ const App: React.FC = () => {
   const [loading, setLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    const delay = 2000 // 2 seconds delay
+    const apiUrl =
+      process.env.NODE_ENV === 'production'
+        ? 'https://devops-dashboard-backend-dca5eea3e154.herokuapp.com'
+        : 'http://localhost:4000'
+    const wsProtocol = apiUrl.startsWith('https') ? 'wss' : 'ws'
 
-    const timeoutId = setTimeout(() => {
-      const apiUrl =
-        process.env.NODE_ENV === 'production'
-          ? 'https://devops-dashboard-backend-dca5eea3e154.herokuapp.com'
-          : 'http://localhost:4000'
-      const wsProtocol = apiUrl.startsWith('https') ? 'wss' : 'ws'
+    let wsUrl: string
+    try {
+      wsUrl = `${wsProtocol}://${new URL(apiUrl).host}/websocket`
+    } catch (error) {
+      console.error('Invalid API URL:', apiUrl)
+      throw new Error('Failed to construct WebSocket URL')
+    }
 
-      let wsUrl: string
+    const ws = new WebSocket(wsUrl)
+    ws.onopen = () => {
+      console.log('WebSocket connection opened')
+    }
+
+    ws.onmessage = (event) => {
       try {
-        wsUrl = `${wsProtocol}://${new URL(apiUrl).host}/websocket`
-      } catch (error) {
-        console.error('Invalid API URL:', apiUrl)
-        throw new Error('Failed to construct WebSocket URL')
-      }
-
-      const ws = new WebSocket(wsUrl)
-      ws.onopen = () => {
-        console.log('WebSocket connection opened')
-      }
-
-      ws.onmessage = (event) => {
-        try {
-          const parsedData = JSON.parse(event.data)
-          setData(parsedData)
-          setLoading(false)
-          setError(null)
-        } catch (e) {
-          console.error('Error parsing JSON:', e)
-          setError('Error parsing data from server')
-          setLoading(false)
-        }
-      }
-
-      ws.onerror = (error) => {
-        console.error('WebSocket error:', error)
-        setError('WebSocket error')
+        const parsedData = JSON.parse(event.data)
+        setData(parsedData)
+        setLoading(false)
+        setError(null)
+      } catch (e) {
+        console.error('Error parsing JSON:', e)
+        setError('Error parsing data from server')
         setLoading(false)
       }
+    }
 
-      ws.onclose = () => {
-        console.log('WebSocket connection closed')
-      }
+    ws.onerror = (error) => {
+      console.error('WebSocket error:', error)
+      setError('WebSocket error')
+      setLoading(false)
+    }
 
-      return () => {
-        ws.close()
-      }
-    }, delay)
-    // Clean up the timeout if the component unmounts before the delay
-    return () => clearTimeout(timeoutId)
+    ws.onclose = () => {
+      console.log('WebSocket connection closed')
+    }
+
+    return () => {
+      ws.close()
+    }
   }, [])
 
   // Calculate best and worst performing servers
@@ -136,6 +130,8 @@ const App: React.FC = () => {
                   const topKeys = server.workers
                     .find(([workerName]) => workerName === 'io')?.[1]
                     .top_keys.slice(0, 3)
+                  console.log(server.workers)
+
                   const blockedKeys = server.workers.find(
                     ([workerName]) => workerName === 'io'
                   )?.[1].recently_blocked_keys
